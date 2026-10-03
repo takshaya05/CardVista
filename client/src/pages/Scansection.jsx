@@ -22,12 +22,12 @@ function Scansection() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+  const apiUrl = import.meta.env.VITE_API_URL || "https://cardvista-backend.onrender.com";
 
   const fetchCard = async (cardId) => {
     if (!cardId) throw new Error("Invalid CardVista card ID.");
 
-    const response = await fetch(`${apiUrl}/cards/${cardId}`);
+    const response = await fetch(`${apiUrl}/api/cards/${cardId}`);
     const data = await response.json().catch(() => null);
 
     if (!response.ok || !data?.card) {

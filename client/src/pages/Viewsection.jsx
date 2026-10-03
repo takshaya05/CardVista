@@ -25,7 +25,7 @@ import { QRCodeCanvas } from "qrcode.react";
 function Viewsection() {
   const navigate = useNavigate();
   const qrCanvasRef = useRef(null);
-  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+  const apiUrl = import.meta.env.VITE_API_URL || "https://cardvista-backend.onrender.com";
 
   const emptyForm = {
     name: "",
@@ -67,7 +67,7 @@ function Viewsection() {
       setLoading(true);
       setError("");
 
-      const res = await fetch(`${apiUrl}/cards`);
+      const res = await fetch(`${apiUrl}/api/cards`);
       const data = await res.json().catch(() => null);
 
       if (!res.ok) throw new Error(data?.message || "Failed to load cards.");
@@ -114,7 +114,7 @@ function Viewsection() {
       setActiveAction({ id, action: "delete" });
       clearMessages();
 
-      const res = await fetch(`${apiUrl}/cards/${id}`, { method: "DELETE" });
+      const res = await fetch(`${apiUrl}/api/cards/${id}`, { method: "DELETE" });
       const data = await res.json().catch(() => null);
 
       if (!res.ok) throw new Error(data?.message || "Failed to delete card.");
@@ -219,7 +219,7 @@ function Viewsection() {
         ])
       );
 
-      const res = await fetch(`${apiUrl}/cards/${id}`, {
+      const res = await fetch(`${apiUrl}/api/cards/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dataToSend)

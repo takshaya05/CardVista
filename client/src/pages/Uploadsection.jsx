@@ -36,7 +36,7 @@ function Uploadsection() {
   const [error, setError] = useState("");
   const [fieldErrors, setFieldErrors] = useState({});
 
-  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+  const apiUrl = import.meta.env.VITE_API_URL || "https://cardvista-backend.onrender.com";
 
   const validateUrl = (value) => {
     if (!value.trim()) return true;
@@ -122,7 +122,7 @@ function Uploadsection() {
         Object.entries(formData).map(([key, value]) => [key, value.trim()])
       );
 
-      const response = await fetch(`${apiUrl}/cards`, {
+      const response = await fetch(`${apiUrl}/api/cards`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(cleanedData)

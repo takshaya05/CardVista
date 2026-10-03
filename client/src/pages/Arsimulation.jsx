@@ -27,7 +27,7 @@ import {
 } from "react-icons/fa";
 
 const apiUrl =
-  import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+  import.meta.env.VITE_API_URL || "https://cardvista-backend.onrender.com";
 
 const themes = {
   Cyan: {
@@ -387,7 +387,7 @@ function Arsimulation() {
     try {
       setLoadingCards(true);
 
-      const response = await fetch(`${apiUrl}/cards`);
+      const response = await fetch(`${apiUrl}/api/cards`);
       const data = await response.json();
 
       if (!response.ok) {
