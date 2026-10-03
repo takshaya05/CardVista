@@ -1,0 +1,126 @@
+.footer {
+  position: relative;
+  width: min(var(--max-width), calc(100% - 32px));
+  margin: 16px auto;
+  border: 1px solid rgba(122, 190, 220, 0.12);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(3, 10, 16, 0.97), rgba(2, 7, 11, 0.96));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.45),
+    inset 0 1px rgba(112, 231, 239, 0.03);
+  overflow: hidden;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent),
+    var(--accent-blue),
+    transparent
+  );
+}
+
+.footer-container {
+  min-height: 72px;
+  padding: 14px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.footer-title {
+  color: var(--text-primary);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.footer-tagline,
+.footer-copyright,
+.footer-contact {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 8px;
+}
+
+.footer-tagline,
+.footer-copyright {
+  color: var(--text-muted);
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.footer-contact-title {
+  color: var(--accent-light);
+  font-weight: 600;
+}
+
+.footer-contact a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+.footer-contact a:hover {
+  color: var(--accent-light);
+}
+
+.footer-contact svg {
+  color: var(--accent);
+}
+
+@media (max-width: 950px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .footer-brand,
+  .footer-contact {
+    align-items: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .footer {
+    width: calc(100% - 20px);
+  }
+
+  .footer-container {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .footer {
+    width: calc(100% - 16px);
+  }
+
+  .footer-container {
+    padding: 14px 12px;
+  }
+}

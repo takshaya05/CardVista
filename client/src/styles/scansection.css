@@ -1,0 +1,137 @@
+.scanner-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.scanner-card {
+  min-height: 470px;
+  padding: 27px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 19px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(53, 212, 223, 0.045), transparent 35%),
+    linear-gradient(145deg, rgba(12, 29, 41, 0.78), rgba(3, 12, 19, 0.88));
+  box-shadow: var(--shadow);
+}
+
+.scanner-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 12%;
+  width: 76%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(53, 212, 223, 0.22), transparent);
+}
+
+.scanner-card h2 {
+  margin-top: 23px;
+  color: var(--text-primary);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.scanner-card > p {
+  margin-top: 10px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.camera-placeholder {
+  width: 100%;
+  min-height: 190px;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px dashed rgba(112, 231, 239, 0.22);
+  border-radius: 15px;
+  background:
+    radial-gradient(circle, rgba(53, 212, 223, 0.03), transparent 65%),
+    rgba(2, 10, 16, 0.48);
+  color: var(--text-muted);
+}
+
+.camera-placeholder svg {
+  font-size: 36px;
+  color: rgba(112, 231, 239, 0.45);
+  filter: drop-shadow(0 0 10px rgba(53, 212, 223, 0.15));
+}
+
+.camera-placeholder span {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+}
+
+.camera-reader {
+  width: 100%;
+  margin-top: 25px;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.camera-reader.active {
+  min-height: 270px;
+  border: 1px solid rgba(112, 231, 239, 0.16);
+  background: #02090e;
+}
+
+.camera-reader video {
+  width: 100% !important;
+  max-height: 310px;
+  object-fit: cover;
+  border-radius: 13px;
+}
+
+.camera-reader__scan_region {
+  border-color: rgba(112, 231, 239, 0.7) !important;
+}
+
+.scanner-card > .primary-button,
+.scanner-card > .secondary-button {
+  margin-top: 18px;
+}
+
+.scanner-status {
+  width: 100%;
+  margin-top: 12px !important;
+  color: var(--accent-light) !important;
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 10px !important;
+  text-align: center;
+}
+
+.hidden-reader {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 950px) {
+  .scanner-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .scanner-card {
+    min-height: auto;
+  }
+
+  .camera-reader.active {
+    min-height: 240px;
+  }
+}

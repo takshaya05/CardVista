@@ -1,0 +1,559 @@
+.ar-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.ar-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(320px, 0.8fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.ar-viewer {
+  position: relative;
+  min-height: 680px;
+  overflow: hidden;
+  border: 1px solid rgba(88, 210, 255, 0.2);
+  border-radius: 24px;
+  background: #03080e;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+}
+
+.ar-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(0, 217, 255, 0.13), transparent 32%),
+    linear-gradient(145deg, #07131e, #02070c 75%);
+}
+
+.environment-office .ar-background {
+  background:
+    linear-gradient(rgba(100, 200, 230, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 200, 230, 0.035) 1px, transparent 1px),
+    #061019;
+  background-size: 55px 55px;
+}
+
+.environment-conference .ar-background {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(0, 217, 255, 0.15), transparent 25%),
+    radial-gradient(circle at 80% 60%, rgba(120, 80, 255, 0.14), transparent 30%),
+    #050b13;
+}
+
+.environment-outdoor .ar-background {
+  background:
+    linear-gradient(180deg, rgba(20, 120, 180, 0.18), transparent 65%),
+    #031018;
+}
+
+.environment-night-city .ar-background {
+  background:
+    linear-gradient(rgba(0, 210, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 210, 255, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(85, 80, 255, 0.13), transparent 42%),
+    #02060b;
+  background-size: 45px 45px;
+}
+
+.background-grid .ar-background {
+  background-image:
+    linear-gradient(rgba(70, 215, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(70, 215, 255, 0.07) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+.background-glow .ar-background {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(0, 220, 255, 0.2), transparent 30%),
+    radial-gradient(circle at 20% 20%, rgba(80, 100, 255, 0.1), transparent 25%),
+    #03080e;
+}
+
+.background-stars .ar-background {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.7) 1px, transparent 2px),
+    radial-gradient(circle at 80% 35%, rgba(255, 255, 255, 0.7) 1px, transparent 2px),
+    radial-gradient(circle at 35% 75%, rgba(255, 255, 255, 0.7) 1px, transparent 2px),
+    radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.7) 1px, transparent 2px),
+    #02060b;
+  background-size: 150px 150px;
+}
+
+.background-minimal .ar-background {
+  background: #040a10;
+}
+
+.three-canvas-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.three-canvas-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
+  cursor: grab;
+}
+
+.three-canvas-wrapper canvas:active {
+  cursor: grabbing;
+}
+
+.ar-viewer-topbar {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  right: 18px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ar-live-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 13px;
+  border: 1px solid rgba(88, 210, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(3, 10, 17, 0.78);
+  backdrop-filter: blur(12px);
+  color: #c2eff9;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.ar-status-dot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #42e7a8;
+  box-shadow: 0 0 12px rgba(66, 231, 168, 0.8);
+}
+
+.ar-fullscreen-button {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(88, 210, 255, 0.2);
+  border-radius: 10px;
+  background: rgba(3, 10, 17, 0.78);
+  color: #dff8ff;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.ar-fullscreen-button:hover {
+  border-color: rgba(88, 210, 255, 0.5);
+  background: rgba(0, 190, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.ar-particle {
+  position: absolute;
+  z-index: 1;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #5cddff;
+  box-shadow: 0 0 18px rgba(89, 220, 255, 0.9);
+  animation: arFloat 5s ease-in-out infinite;
+}
+
+.particle-one { top: 20%; left: 12%; }
+.particle-two { top: 32%; right: 14%; animation-delay: 1s; }
+.particle-three { bottom: 25%; left: 18%; animation-delay: 2s; }
+.particle-four { bottom: 18%; right: 20%; animation-delay: 3s; }
+.particle-five { top: 50%; left: 7%; animation-delay: 1.5s; }
+.particle-six { top: 60%; right: 8%; animation-delay: 2.5s; }
+.particle-seven { top: 15%; right: 30%; animation-delay: 3.5s; }
+.particle-eight { bottom: 30%; left: 38%; animation-delay: 4s; }
+
+.background-glow .ar-particle {
+  width: 12px;
+  height: 12px;
+  filter: blur(2px);
+}
+
+.background-stars .ar-particle {
+  width: 3px;
+  height: 3px;
+  background: #fff;
+  box-shadow: 0 0 10px #fff;
+}
+
+@keyframes arFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: translateY(-25px) scale(1.4);
+    opacity: 1;
+  }
+}
+
+.ar-controls {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  width: calc(100% - 36px);
+  transform: translateX(-50%);
+}
+
+.ar-controls button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 95px;
+  padding: 10px 12px;
+  border: 1px solid rgba(100, 214, 245, 0.18);
+  border-radius: 10px;
+  background: rgba(3, 11, 18, 0.86);
+  backdrop-filter: blur(12px);
+  color: #c9eff8;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.ar-controls button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(100, 214, 245, 0.45);
+  background: rgba(0, 180, 230, 0.1);
+  color: #fff;
+}
+
+.ar-controls button svg {
+  font-size: 11px;
+}
+
+.ar-settings {
+  padding: 24px;
+  border: 1px solid rgba(100, 214, 245, 0.15);
+  border-radius: 22px;
+  background: rgba(8, 17, 26, 0.88);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.ar-settings-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(150, 210, 225, 0.08);
+}
+
+.ar-settings-icon {
+  width: 45px;
+  height: 45px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(75, 215, 255, 0.2);
+  border-radius: 12px;
+  background: rgba(0, 200, 255, 0.07);
+  color: #66dcff;
+}
+
+.ar-settings-header h2 {
+  margin: 0;
+  color: #fff;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 22px;
+}
+
+.ar-settings-header p {
+  margin: 4px 0 0;
+  color: #698391;
+  font-size: 12px;
+}
+
+.ar-card-selector {
+  margin: 20px 0 16px;
+}
+
+.ar-card-selector label,
+.setting-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #a9d3df;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ar-card-selector label {
+  margin-bottom: 8px;
+}
+
+.ar-card-selector label svg,
+.setting-group label svg {
+  color: #60d8fa;
+}
+
+.ar-card-selector select,
+.setting-group select {
+  width: 100%;
+  padding: 12px 13px;
+  border: 1px solid rgba(130, 207, 225, 0.12);
+  border-radius: 10px;
+  outline: none;
+  background: #0b1822;
+  color: #d9f5fc;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.ar-card-selector select:focus,
+.setting-group select:focus {
+  border-color: rgba(85, 214, 255, 0.4);
+}
+
+.ar-loading-card,
+.ar-empty-card {
+  padding: 14px;
+  border: 1px solid rgba(130, 207, 225, 0.08);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  color: #718995;
+  font-size: 11px;
+}
+
+.ar-empty-card p {
+  margin: 0 0 10px;
+}
+
+.ar-empty-card .secondary-button {
+  width: 100%;
+  justify-content: center;
+}
+
+.ar-selected-card-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 13px;
+  border: 1px solid rgba(80, 215, 245, 0.1);
+  border-radius: 13px;
+  background: rgba(0, 200, 255, 0.035);
+}
+
+.ar-mini-avatar {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(0, 210, 255, 0.08);
+  color: #68dfff;
+}
+
+.ar-mini-avatar svg {
+  font-size: 28px;
+}
+
+.ar-selected-card-info > div:last-of-type {
+  min-width: 0;
+}
+
+.ar-selected-card-info strong,
+.ar-selected-card-info span,
+.ar-selected-card-info small {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ar-selected-card-info strong {
+  color: #d8f5fc;
+  font-size: 13px;
+}
+
+.ar-selected-card-info span {
+  margin-top: 3px;
+  color: #82a9b7;
+  font-size: 10px;
+}
+
+.ar-selected-card-info small {
+  margin-top: 2px;
+  color: #54717e;
+  font-size: 9px;
+}
+
+.ar-selected-card-info > svg:last-child {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: #48e4a8;
+  font-size: 13px;
+}
+
+.setting-group {
+  margin-bottom: 15px;
+}
+
+.setting-group label {
+  margin-bottom: 7px;
+}
+
+.ar-start-button,
+.ar-reset-button {
+  width: 100%;
+  justify-content: center;
+}
+
+.ar-reset-button {
+  margin-top: 9px;
+}
+
+.ar-start-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.ar-notification {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 17px;
+  border: 1px solid rgba(75, 216, 255, 0.2);
+  border-radius: 10px;
+  background: rgba(5, 14, 21, 0.96);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+  color: #bfeaf5;
+  font-size: 12px;
+}
+
+.ar-fullscreen-active {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  padding: 0;
+  background: #02070c;
+}
+
+.ar-fullscreen-active .section-container {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  padding: 0;
+}
+
+.ar-fullscreen-active .ar-layout {
+  display: block;
+  height: 100%;
+}
+
+.ar-fullscreen-active .ar-viewer {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  border: 0;
+  border-radius: 0;
+}
+
+.ar-fullscreen-active .three-canvas-wrapper {
+  inset: 40px 0 0;
+}
+
+@media (max-width: 1100px) {
+  .ar-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ar-viewer {
+    min-height: 620px;
+  }
+}
+
+@media (max-width: 700px) {
+  .ar-viewer {
+    min-height: 650px;
+  }
+
+  .ar-controls {
+    width: calc(100% - 24px);
+  }
+
+  .ar-controls button {
+    min-width: 0;
+    flex: 1 1 calc(33.333% - 7px);
+    padding: 9px 7px;
+    font-size: 9px;
+  }
+
+  .ar-settings {
+    padding: 18px;
+  }
+
+  .ar-settings-header h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ar-viewer {
+    min-height: 680px;
+  }
+
+  .ar-controls button {
+    flex: 1 1 calc(50% - 7px);
+  }
+
+  .ar-live-status {
+    font-size: 9px;
+  }
+
+  .ar-notification {
+    right: 15px;
+    bottom: 15px;
+    left: 15px;
+    justify-content: center;
+  }
+
+  .ar-settings-header {
+    gap: 10px;
+  }
+
+  .ar-settings-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .ar-settings-header h2 {
+    font-size: 18px;
+  }
+
+  .ar-settings-header p {
+    font-size: 11px;
+  }
+}

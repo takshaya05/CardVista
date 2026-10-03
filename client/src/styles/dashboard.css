@@ -1,0 +1,215 @@
+.dashboard,
+.dashboard-section {
+  padding: 70px 0 90px;
+}
+
+.dashboard {
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(53, 212, 223, 0.02),
+    transparent 55%
+  );
+}
+
+.dashboard-heading {
+  max-width: 720px;
+  margin-bottom: 42px;
+}
+
+.dashboard-heading h1 {
+  color: var(--text-primary);
+  font: 700 clamp(34px, 5vw, 54px) / 1.05 "Space Grotesk", sans-serif;
+  letter-spacing: -1.8px;
+}
+
+.dashboard-heading p {
+  max-width: 650px;
+  margin-top: 16px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.dashboard-card {
+  position: relative;
+  min-height: 300px;
+  padding: 23px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(53, 212, 223, 0.05), transparent 35%),
+    linear-gradient(145deg, rgba(12, 29, 41, 0.82), rgba(3, 12, 19, 0.9));
+  box-shadow: var(--shadow), inset 0 1px rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(13px);
+  transition: 0.3s ease;
+}
+
+.dashboard-card::before,
+.dashboard-intro::before {
+  content: "";
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(53, 212, 223, 0.3), transparent);
+}
+
+.dashboard-card::before {
+  top: 0;
+  left: 12%;
+  width: 76%;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-hover);
+  box-shadow:
+    0 28px 60px rgba(0, 0, 0, 0.5),
+    0 0 28px rgba(53, 212, 223, 0.055);
+}
+
+.dashboard-card-top {
+  display: flex;
+}
+
+.dashboard-icon,
+.scanner-icon,
+.dashboard-intro-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 13px;
+  font-size: 19px;
+}
+
+.dashboard-icon,
+.scanner-icon {
+  color: var(--accent-light);
+  background: linear-gradient(
+    135deg,
+    rgba(53, 212, 223, 0.08),
+    rgba(93, 157, 245, 0.045)
+  );
+  border: 1px solid rgba(53, 212, 223, 0.15);
+  box-shadow: 0 0 22px rgba(53, 212, 223, 0.035);
+}
+
+.dashboard-card h2 {
+  margin-top: 25px;
+  color: var(--text-primary);
+  font: 600 20px "Space Grotesk", sans-serif;
+}
+
+.dashboard-card p {
+  margin-top: 10px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.dashboard-button {
+  margin-top: auto;
+  padding: 11px 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(53, 212, 223, 0.15);
+  border-radius: 10px;
+  background: linear-gradient(
+    135deg,
+    rgba(53, 212, 223, 0.055),
+    rgba(93, 157, 245, 0.03)
+  );
+  color: var(--accent-light);
+  font: 600 10px "JetBrains Mono", monospace;
+  transition: 0.25s ease;
+}
+
+.dashboard-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: var(--border-hover);
+  background: linear-gradient(
+    135deg,
+    rgba(53, 212, 223, 0.1),
+    rgba(93, 157, 245, 0.065)
+  );
+  box-shadow: 0 0 18px rgba(53, 212, 223, 0.05);
+}
+
+.dashboard-intro {
+  position: relative;
+  margin-top: 24px;
+  padding: 23px;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  background: linear-gradient(
+    135deg,
+    rgba(9, 24, 35, 0.72),
+    rgba(3, 11, 18, 0.7)
+  );
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.025);
+}
+
+.dashboard-intro::before {
+  top: 0;
+  left: 15%;
+  width: 70%;
+  background: linear-gradient(90deg, transparent, rgba(93, 157, 245, 0.25), transparent);
+}
+
+.dashboard-intro-icon {
+  background: rgba(93, 157, 245, 0.07);
+  border: 1px solid rgba(93, 157, 245, 0.13);
+  color: var(--accent-blue-light);
+}
+
+.dashboard-intro h2 {
+  color: var(--text-primary);
+  font: 600 18px "Space Grotesk", sans-serif;
+}
+
+.dashboard-intro p {
+  margin-top: 5px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+@media (max-width: 1050px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .dashboard,
+  .dashboard-section {
+    padding: 55px 0 70px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-card {
+    min-height: 270px;
+  }
+
+  .dashboard-intro {
+    align-items: flex-start;
+  }
+}

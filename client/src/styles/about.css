@@ -1,0 +1,150 @@
+.about {
+  display: flex;
+  align-items: center;
+  padding: 90px 0;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(2, 8, 13, 0.52) 50%,
+    transparent
+  );
+}
+
+.section-heading {
+  max-width: 700px;
+  margin: 0 auto 50px;
+  text-align: center;
+}
+
+.section-heading h2 {
+  color: var(--text-primary);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(32px, 5vw, 50px);
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  font-weight: 700;
+  text-shadow: 0 0 22px rgba(53, 212, 223, 0.05);
+}
+
+.section-heading p {
+  max-width: 640px;
+  margin: 18px auto 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.instructions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.instruction-card {
+  position: relative;
+  min-height: 235px;
+  padding: 23px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(53, 212, 223, 0.045), transparent 40%),
+    linear-gradient(145deg, rgba(12, 29, 41, 0.78), rgba(3, 12, 19, 0.88));
+  box-shadow: var(--shadow), inset 0 1px rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(12px);
+  transition: 0.3s ease;
+}
+
+.instruction-card::after {
+  content: "";
+  position: absolute;
+  right: -35px;
+  bottom: -45px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: rgba(53, 212, 223, 0.03);
+  filter: blur(25px);
+}
+
+.instruction-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-hover);
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    0 0 28px rgba(53, 212, 223, 0.06);
+}
+
+.instruction-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.instruction-number {
+  color: var(--accent-blue-light);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.instruction-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(53, 212, 223, 0.15);
+  border-radius: 12px;
+  color: var(--accent-light);
+  background: linear-gradient(
+    135deg,
+    rgba(53, 212, 223, 0.08),
+    rgba(93, 157, 245, 0.045)
+  );
+  box-shadow: 0 0 20px rgba(53, 212, 223, 0.035);
+}
+
+.instruction-card h3 {
+  margin-top: 30px;
+  color: var(--text-primary);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.instruction-card p {
+  margin-top: 10px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+@media (max-width: 1050px) {
+  .instructions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .about {
+    padding: 70px 0;
+  }
+
+  .section-heading {
+    margin-bottom: 35px;
+  }
+
+  .section-heading p {
+    font-size: 13px;
+  }
+
+  .instructions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .instruction-card {
+    min-height: auto;
+  }
+}

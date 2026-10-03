@@ -1,0 +1,53 @@
+.qr-upload-area {
+  width: 100%;
+  min-height: 150px;
+  margin-top: 18px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  border: 1px dashed rgba(112, 231, 239, 0.22);
+  border-radius: 12px;
+
+  background:
+    radial-gradient(circle, rgba(53, 212, 223, 0.04), transparent 65%),
+    rgba(2, 10, 16, 0.45);
+
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.qr-upload-area:hover {
+  border-color: rgba(73, 205, 230, 0.4);
+  background:
+    radial-gradient(circle, rgba(53, 212, 223, 0.06), transparent 65%),
+    rgba(2, 10, 16, 0.55);
+  box-shadow: 0 0 20px rgba(53, 212, 223, 0.035);
+}
+
+.qr-upload-area svg {
+  font-size: 28px;
+  color: rgba(112, 231, 239, 0.5);
+}
+
+.qr-upload-area span {
+  max-width: 90%;
+  color: var(--text-secondary);
+  font: 600 10px "JetBrains Mono", monospace;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.qr-upload-area small {
+  color: var(--text-muted);
+  font: 9px "JetBrains Mono", monospace;
+}
+
+.qr-upload-area input {
+  display: none;
+}
